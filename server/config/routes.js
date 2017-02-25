@@ -1,18 +1,23 @@
 //you need to require some files here
+var userController = require('../user/userController.js');
+var storyController = require('../story/storyController.js');
 
 module.exports = function (app, express) {
 
 //=============================================================================
-/*								movie route									 */
+/*								user route									 */
 //=============================================================================
-	app.get('/api/movie/getAll', movieController.getAllMovies);
+	app.post('/user/signup', userController.signup);
+	app.post('/user/signin', userController.signin);
+    app.get('/user/getAllUsers', userController.getAllUsers);
 	//here you have to add two more routes
 	
 //=============================================================================
-/*								book route									 */
+/*								story route									 */
 //=============================================================================
-	app.post('/api/book/insterbooks', bookController.insertBooks);
+	app.post('/story/insertStory', storyController.insertStory);
+	app.get('/story/getAllStories', storyController.getAllStories);
+	app.get('/story/getStoryById/:id', storyController.getStoryById);
 	//here you have to add two more routes
-
 };
 
