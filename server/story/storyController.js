@@ -4,13 +4,13 @@ module.exports ={
 	//you have to use the books model to make a new database entry 
 	//you need to use params.id to find a books from your database
 	insertStory: function(req,res){
-      Stories.create(req.body,function(err,story){
-      if(story){
-      	res.json(story)
-      }else{
-      	console.log('err')
-      }
- 	})
+	 for(var i = 0; i < req.body.length; i++){
+       Stories.create(req.body[i],function(err,story){
+        if(err)
+      	 console.log(err) 
+ 	  })
+     }
+     module.exports.getAllStories(req,res)
 	},
 	getAllStories : function(req,res){
 		Stories.find({},function(err,data){
